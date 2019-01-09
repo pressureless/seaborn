@@ -399,11 +399,14 @@ class _CategoricalPlotter(object):
             ax.set_ylabel(ylabel)
 
         if self.orient == "v":
-            ax.set_xticks(np.arange(len(self.plot_data)))
-            ax.set_xticklabels(self.group_names)
+            # ax.set_xticks(np.arange(len(self.plot_data)))
+            # ax.set_xticklabels(self.group_names)
+            # ax.set_xticklabels([])
+            aaa = 1
         else:
             ax.set_yticks(np.arange(len(self.plot_data)))
-            ax.set_yticklabels(self.group_names)
+            # ax.set_yticklabels(self.group_names)
+            ax.set_yticklabels([])
 
         if self.orient == "v":
             ax.xaxis.grid(False)
@@ -1008,10 +1011,11 @@ class _ViolinPlotter(_CategoricalPlotter):
         if self.orient == "v":
             ax.plot([center, center], [h1, h2],
                     linewidth=self.linewidth,
-                    color=self.gray)
+                    color=self.gray,solid_capstyle='round', solid_joinstyle='round', ls='solid')
             ax.plot([center, center], [q25, q75],
                     linewidth=self.linewidth * 3,
-                    color=self.gray)
+                    color=self.gray,solid_capstyle='round', solid_joinstyle='round', ls='solid')
+            print "center:" + str(center)
             ax.scatter(center, q50,
                        zorder=3,
                        color="white",
